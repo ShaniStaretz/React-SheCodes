@@ -1,0 +1,9 @@
+.Mh1 {
+   color: red; 
+}
+ul{
+   display: flex;
+   align-items: center;
+   justify-items: center;
+   flex-direction: column;
+}

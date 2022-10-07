@@ -1,0 +1,10 @@
+.toDoForm {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    height: 40%;
+    border: 3px solid red;
+  } 
