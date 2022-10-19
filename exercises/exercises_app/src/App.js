@@ -1,7 +1,9 @@
 
 import './App.css';
 import React, { Component } from 'react';
+import Hooks from './hooks'
 import School from './School';
+import NewBookForm from './BookForm';
 import Form from './Form';
 import Http from './Http1';
 import Route1 from './route1';
@@ -48,15 +50,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <Hooks/>
+      <NewBookForm/>
         {/* <br /> <br />
-     
+        
         <button onClick={this.changeName.bind(this,'Shani Staretz')}>change state</button>
         <br /><br />
         <input type="text" onChange={this.changeNameFromInput} value={this.state.name}/>
         <br /><br />
         <div>{this.state.name}</div> */}
-        <Http/>
-        <Route1/>
+        {/* <Http/>
+        <Route1/> */}
         {/* <div><Form onChange={fields=>this.onChange(fields)}/>
         <p>
           {JSON.stringify(this.state.fields, null, 2)}
