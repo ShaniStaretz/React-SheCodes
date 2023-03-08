@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import { AuthContext } from '../context/AuthContext';
 import { ThemeContext } from '../context/ThemeContext';
 class NavBar extends Component {
@@ -15,6 +16,7 @@ class NavBar extends Component {
 								<nav style={{ background: theme.bg, color: theme.textColor }}>
 									<h1>Context App</h1>
 									<div onClick={toggleAuth}>{isAuthenticated ? 'Logged in' : 'Logged out'}</div>
+									
 									<ul>
 										<li style={{ background: theme.ui }}>Home</li>
 										<li style={{ background: theme.ui }}>About</li>

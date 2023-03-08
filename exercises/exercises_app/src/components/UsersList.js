@@ -1,7 +1,6 @@
 import React, { Component, useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
-import { BookContext } from '../context/BookContext';
-import BookDetails from './BookDetails';
+import { UserContext } from '../context/UserContext';
 
 // class BookList extends Component {
 //   static contextType = ThemeContext;
@@ -20,28 +19,23 @@ import BookDetails from './BookDetails';
 //   }
 // }
 
-const BookList = () => {
+const UsersList = () => {
 	const { isLightTheme, light, dark } = useContext(ThemeContext);
-	 const {books}=useContext(BookContext)
+	const {users}  = useContext(UserContext);
 	const theme = isLightTheme ? light : dark;
 	return (
-		<div>
 		<div className="book-list" style={{ color: theme.syntax, background: theme.bg }}>
-			<h1>List:</h1>
-			
-				{books.map((book,index) => {
-					
+			<ul>
+				{users.map((user) => {
 					return (
-						<div key={index} >
-						<BookDetails  book={book} />
-						{(index<books.length-1)&&<hr className="rounded"/>}
-						</div>
+						<li key={user.id} style={{ background: theme.ui }}>
+							{user.displayName}
+						</li>
 					);
 				})}
-			
-		</div>
+			</ul>
 		</div>
 	);
 };
 
-export default BookList;
+export default UsersList;

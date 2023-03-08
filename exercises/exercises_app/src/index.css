@@ -27,12 +27,21 @@ nav ul li {
   padding: 20px;
   margin-bottom: 20px;
 }
+
 .book-list ul{
   padding: 0;
+  width: 100%;
   list-style-type: none;
 }
+
 .book-list li {
   padding: 10px;
   margin: 10px auto;
   border-radius: 10px;
+}
+
+.book-details{
+  width: 100%;
+  display: inline-block;
+ 
 }
