@@ -17,6 +17,10 @@ import UserContextProvider from './context/UserContext';
 import BookContextProvider from './context/BookContext';
 //import ThemeToggle from './components/ThemeToggle';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, decrement } from './actions';
+
+
 // const studentsGrades = [
 //   { name: "Naama", grade: "90", id: 0 },
 //   { name: "David", grade: "80", id: 1 },
@@ -24,61 +28,68 @@ import BookContextProvider from './context/BookContext';
 //   { name: "Yaniv", grade: "100", id: 3 }
 // ]
 
-// function App() {
-
-//   return (
-//     <div className="App">
-//      <School list={studentsGrades}/>
-//     </div>
-//   );
-// }
-class App extends Component {
-	// constructor(props){
-	//   super(props);
-
-	// }
-	// state = {
-	//   name: "shani"
-	// }
-	// changeName = (newName) => {
-	//   this.setState({ name: newName })
-	// }
-
-	// changeNameFromInput = (event) => {
-	//   this.setState({ name: event.target.value })
-	// }
-
-	// onChange = updatedValue => {
-	//   this.setState({
-	//     fields: {
-	//       ...this.state.fields,//keep the existing values
-	//       ...updatedValue// adding new value
-	//     }
-	//   });
-	// };
-	render() {
-		return (
-			<div className="App">
-				<ThemeContextProvider>
-					<AuthContextProvider>
-						{/* <NavBar /> */}
-						<NavBarHook />
-						{/* <Form /> */}
-						{/* <UserContextProvider>
-							<UsersList />
-						</UserContextProvider> */}
-						<BookContextProvider>
-							<NewBookForm/>
-							<BookList />
-							
-						</BookContextProvider>
-						<ThemeToggleHook />
-						{/* <ThemeToggle /> */}
-					</AuthContextProvider>
-				</ThemeContextProvider>
-			</div>
-		);
-	}
+function App() {
+	const counter = useSelector((state) => state.counter);
+	const islogged = useSelector((state) => state.islogged);
+	const dispatch= useDispatch()
+	return (
+		<div className="App">
+			<h1>Counter {counter}</h1>
+			<button onClick={()=>dispatch(increment(5))}>+</button>
+			<button onClick={()=>dispatch(decrement())}>-</button>
+			{islogged ? <h3> valuable inforation i souldn't see</h3> : ''}
+			
+		</div>
+	);
 }
+// class App extends Component {
+// 	// constructor(props){
+// 	//   super(props);
+
+// 	// }
+// 	// state = {
+// 	//   name: "shani"
+// 	// }
+// 	// changeName = (newName) => {
+// 	//   this.setState({ name: newName })
+// 	// }
+
+// 	// changeNameFromInput = (event) => {
+// 	//   this.setState({ name: event.target.value })
+// 	// }
+
+// 	// onChange = updatedValue => {
+// 	//   this.setState({
+// 	//     fields: {
+// 	//       ...this.state.fields,//keep the existing values
+// 	//       ...updatedValue// adding new value
+// 	//     }
+// 	//   });
+// 	// };
+// 	render() {
+// 		return (
+// 			<div className="App">
+
+// 				<ThemeContextProvider>
+// 					<AuthContextProvider>
+// 						{/* <NavBar /> */}
+// 						<NavBarHook />
+// 						{/* <Form /> */}
+// 						{/* <UserContextProvider>
+// 							<UsersList />
+// 						</UserContextProvider> */}
+// 						<BookContextProvider>
+// 							<NewBookForm/>
+// 							<BookList />
+
+// 						</BookContextProvider>
+// 						<ThemeToggleHook />
+// 						{/* <ThemeToggle /> */}
+// 					</AuthContextProvider>
+// 				</ThemeContextProvider>
+// 			</div>
+// 		);
+// 	}
+// }
 
 export default App;

@@ -4,11 +4,32 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import allReducers from './reducers';
+
+import rootReducer from './reducers/rootReducer';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux'; //connects the store to the all
+
+const initState = {
+	magazines: ["m1","m2"],
+    authors:["aut1","aut2"]
+};
+
+const addMagazine={type:'ADD_MAGAZINES',magazine:'vouge'}
+const addAuthor={type:'ADD_AUTHORS',magazine:'emma'}
+
+const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+store.subscribe(()=>{
+	console.log("store:",store.getState())
+})
+
+store.dispatch(addMagazine)
+store.dispatch(addAuthor)
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
